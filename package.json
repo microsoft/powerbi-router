@@ -1,0 +1,40 @@
+{
+  "name": "powerbi-router",
+  "version": "0.1.0",
+  "description": "Router for Microsoft Power BI. Given a pattern, call handler. Patterns will only be http-like objects so syntax matches known libraries such as express and restify.",
+  "main": "dist/router.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/powerbi-router"
+  },
+  "keywords": [
+    "microsoft",
+    "powerbi",
+    "router"
+  ],
+  "author": "Microsoft Power BI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-help": "^1.6.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.26",
+    "phantomjs-prebuilt": "^2.1.7",
+    "run-sequence": "^1.2.0",
+    "ts-loader": "^0.8.2",
+    "webpack-stream": "^3.2.0",
+    "yargs": "^4.7.1"
+  },
+  "dependencies": {
+    "es6-promise": "^3.2.1"
+  }
+}
