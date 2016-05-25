@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "description": "Router for Microsoft Power BI. Given a pattern, call handler. Patterns will only be http-like objects so syntax matches known libraries such as express and restify.",
   "main": "dist/router.js",
+  "typings": "dist/router.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test --debug",
+    "prepublish": "tsc -p ."
   },
   "repository": {
     "type": "git",
@@ -36,5 +38,8 @@
   },
   "dependencies": {
     "es6-promise": "^3.2.1"
+  },
+  "publishConfig": {
+    "tag": "beta"
   }
 }
