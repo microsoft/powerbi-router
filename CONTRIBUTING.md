@@ -7,7 +7,7 @@ Clone the repository:
 git clone https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/powerbi-router
 ```
 
-Install global dependencies:
+Install global dependencies if needed:
 ```
 npm install -g typescript gulp typings
 ```
