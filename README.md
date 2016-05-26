@@ -2,14 +2,12 @@
 
 Router for Microsoft Power BI. Given a pattern, call handler. Patterns will only be http-like objects so syntax matches known libraries such as express and restify.
 
-## Getting Started
-
-Installation:
+## Installation:
 ```
 npm install --save powerbi-router
 ```
 
-Usage:
+## Usage:
 ```
 import * as wpmp from 'window-post-message-proxy';
 import * as pbiRouter from 'powerbi-router';
