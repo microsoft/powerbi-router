@@ -8,7 +8,7 @@ module.exports = function (config) {
           './tmp/**/*.js'
         ],
         exclude: [],
-        reporters: argv.debug ? ['spec'] : ['spec', 'coverage'],
+        reporters: ['spec', 'coverage'],
         autoWatch: true,
         browsers: [argv.debug ? 'Chrome' : 'PhantomJS'],
         plugins: [
@@ -20,7 +20,7 @@ module.exports = function (config) {
             'karma-coverage'
         ],
         preprocessors: {
-            './tmp/**/*.js': ['sourcemap']
+            './tmp/**/*.js': ['coverage', 'sourcemap']
         },
         coverageReporter: {
             reporters: [
