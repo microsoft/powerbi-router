@@ -73,6 +73,34 @@ describe('router', function () {
     });
   });
   
+  describe('patch', function () {
+    // Arrange
+    const testUrl = '/report/options';
+    const testHandler: pbiRouter.IRouterHandler = (request: pbiRouter.IRequest, response: pbiRouter.Response) => {
+      response.send(202);
+    };
+    let internalHandler: any;
+
+    beforeEach(function () {
+      router.patch(testUrl, testHandler);
+      internalHandler = wpmpStub.addHandler.calls.mostRecent().args[0];
+    });
+    
+    afterEach(function () {
+      wpmpStub.addHandler.calls.reset();
+    });
+    
+    it('calling post registers handler on the handlers object', function () {
+      expect(wpmpStub.addHandler).toHaveBeenCalled();
+    });
+    
+    it('the test method will return true if the method is PATCH and the url match exactly', function () {
+      expect(internalHandler.test({ method: "GET", url: "xyz" })).toBe(false);
+      expect(internalHandler.test({ method: "PATCH", url: "xyz" })).toBe(false);
+      expect(internalHandler.test({ method: "PATCH", url: testUrl })).toBe(true);
+    });
+  });
+  
   describe('post', function () {
     // Arrange
     const testUrl = '/report/filters';

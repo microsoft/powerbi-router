@@ -18,6 +18,11 @@ export class Router {
     return this;
   }
   
+  patch(url: string, handler: IRouterHandler): this {
+    this.registerHandler("PATCH", url, handler);
+    return this;
+  }
+  
   post(url: string, handler: IRouterHandler): this {
     this.registerHandler("POST", url, handler);
     return this;
