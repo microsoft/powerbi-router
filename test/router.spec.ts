@@ -38,7 +38,12 @@ describe('router', function () {
           done();
         });
     });
-  })
+    
+    it('calling any method on the router instance always returns itself to allow chaining', function () {
+      const returnValue = router.get("abc", testHandler);
+      expect(returnValue).toBe(router);
+    });
+  });
   
   describe('get', function () {
     // Arrange

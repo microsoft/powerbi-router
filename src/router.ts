@@ -13,20 +13,24 @@ export class Router {
     this.handlers = handlers;
   }
   
-  get(url: string, handler: IRouterHandler) {
+  get(url: string, handler: IRouterHandler): this {
     this.registerHandler("GET", url, handler);
+    return this;
   }
   
-  post(url: string, handler: IRouterHandler) {
+  post(url: string, handler: IRouterHandler): this {
     this.registerHandler("POST", url, handler);
+    return this;
   }
   
-  put(url: string, handler: IRouterHandler) {
+  put(url: string, handler: IRouterHandler): this {
     this.registerHandler("PUT", url, handler);
+    return this;
   }
   
-  delete(url: string, handler: IRouterHandler) {
+  delete(url: string, handler: IRouterHandler): this {
     this.registerHandler("DELETE", url, handler);
+    return this;
   }
   
   private registerHandler(method: string, url: string, handler: IRouterHandler) {
