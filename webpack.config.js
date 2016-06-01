@@ -4,6 +4,11 @@ module.exports = {
     path: __dirname + "/tmp",
     filename: 'router.spec.js'
   },
+  externals: [
+    {
+      "route-recognizer": "RouteRecognizer"
+    }
+  ],
   devtool: 'source-map',
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
