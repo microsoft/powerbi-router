@@ -1,4 +1,4 @@
-import * as pbiRouter from '../src/router';
+import * as Router from '../src/router';
 
 describe('router', function () {
   let wpmpStub = {
@@ -25,16 +25,16 @@ describe('router', function () {
   
   
   describe('common', function () {
-    let router: pbiRouter.Router;
+    let router: Router.Router;
     const testUrl = '/report/pages';
-    const testHandler: pbiRouter.IRouterHandler = (request, response) => {
+    const testHandler: Router.IRouterHandler = (request, response) => {
       response.send(200, { params: request.params });
     };
     let internalHandler: any;
     
     beforeAll(function () {
       wpmpStub.handlers.length = 0;
-      router = new pbiRouter.Router(wpmpStub);
+      router = new Router.Router(wpmpStub);
       router.get(testUrl, testHandler);
     });
     
@@ -123,9 +123,9 @@ describe('router', function () {
   });
   
   describe('http methods', function () {
-    let router: pbiRouter.Router;
+    let router: Router.Router;
     let testUrl = '/report/pages/:pageName';
-    let testHandler: pbiRouter.IRouterHandler = (request, response) => {
+    let testHandler: Router.IRouterHandler = (request, response) => {
       response.send(200, { params: request.params });
     };
     let internalHandler: any;
@@ -133,7 +133,7 @@ describe('router', function () {
     
     beforeAll(function () {
       wpmpStub.handlers.length = 0;
-      router = new pbiRouter.Router(wpmpStub);
+      router = new Router.Router(wpmpStub);
       router.get(testUrl, testHandler);
     });
     
