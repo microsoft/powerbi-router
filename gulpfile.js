@@ -8,27 +8,7 @@ var del = require('del'),
     argv = require('yargs').argv
     ;
 
-gulp.task('build', 'Build library', function (done) {
-    return runSequence(
-        'build:src',
-        'copydts',
-        'removedts',
-        done
-    )
-});
-
-gulp.task('copydts', 'Copy .d.ts to dist', function() {
-    return gulp.src('./src/*.d.ts')
-        .pipe(gulp.dest('./dist'))
-});
-
-gulp.task('removedts', 'Clean .d.ts from src', function () {
-    return del([
-        './src/*.d.ts'
-    ]);
-})
-
-gulp.task('build:src', 'Compile source files', function () {
+gulp.task('build', 'Compile source files', function () {
     return gulp.src(['typings/**/*.d.ts', './src/**/*.ts'])
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./dist'));
