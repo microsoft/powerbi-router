@@ -1,10 +1,38 @@
 var gulp = require('gulp-help')(require('gulp'));
-var karma = require('karma'),
+var del = require('del'),
+    karma = require('karma'),
     webpack = require('webpack-stream'),
     webpackConfig = require('./webpack.config'),
+    webpackE2eConfig = require('./webpack.e2e.config'),
     runSequence = require('run-sequence'),
     argv = require('yargs').argv
     ;
+
+gulp.task('build', 'Build library', function (done) {
+    return runSequence(
+        'build:src',
+        'copydts',
+        'removedts',
+        done
+    )
+});
+
+gulp.task('copydts', 'Copy .d.ts to dist', function() {
+    return gulp.src('./src/*.d.ts')
+        .pipe(gulp.dest('./dist'))
+});
+
+gulp.task('removedts', 'Clean .d.ts from src', function () {
+    return del([
+        './src/*.d.ts'
+    ]);
+})
+
+gulp.task('build:src', 'Compile source files', function () {
+    return gulp.src(['typings/**/*.d.ts', './src/**/*.ts'])
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest('./dist'));
+});
 
 gulp.task('test', 'Run unit tests', function (done) {
     return runSequence(
@@ -16,7 +44,7 @@ gulp.task('test', 'Run unit tests', function (done) {
 
 gulp.task('compile:spec', 'Compile typescript for tests', function () {
     return gulp.src(['typings/**/*.d.ts', './src/**/*.ts', './test/**/*.spec.ts'])
-        .pipe(webpack(webpackConfig))
+        .pipe(webpack(webpackE2eConfig))
         .pipe(gulp.dest('./tmp'));
 });
 

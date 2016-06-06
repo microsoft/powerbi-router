@@ -1,10 +1,8 @@
-module.exports = {
-  entry: './src/router.ts',
+module.exports = {  
+  entry: './test/router.spec.ts',
   output: {
-    path: __dirname + "/dist",
-    filename: 'router.js',
-    library: 'powerbi-router',
-    libraryTarget: 'umd'
+    path: __dirname + "/tmp",
+    filename: 'router.spec.js'
   },
   devtool: 'source-map',
   resolve: {

@@ -1,4 +1,4 @@
-import * as RouteRecognizer from 'route-recognizer';
+import RouteRecognizer = require('route-recognizer');
 
 export interface IAddHandler {
   addHandler(handler: any): void;
@@ -10,11 +10,11 @@ export interface IRouterHandler {
 
 export class Router {
   private handlers: IAddHandler;
-  private getRouteRecognizer: RouteRecognizer.RouteRecognizer;
-  private patchRouteRecognizer: RouteRecognizer.RouteRecognizer;
-  private postRouteRecognizer: RouteRecognizer.RouteRecognizer;
-  private putRouteRecognizer: RouteRecognizer.RouteRecognizer;
-  private deleteRouteRecognizer: RouteRecognizer.RouteRecognizer;
+  private getRouteRecognizer: RouteRecognizer<any>;
+  private patchRouteRecognizer: RouteRecognizer<any>;
+  private postRouteRecognizer: RouteRecognizer<any>;
+  private putRouteRecognizer: RouteRecognizer<any>;
+  private deleteRouteRecognizer: RouteRecognizer<any>;
   
   constructor(handlers: IAddHandler) {
     this.handlers = handlers;
@@ -23,11 +23,11 @@ export class Router {
      * TODO: look at generating the router dynamically based on list of supported http methods
      * instead of hardcoding the creation of these and the methods.
      */
-    this.getRouteRecognizer = new RouteRecognizer.RouteRecognizer();
-    this.patchRouteRecognizer = new RouteRecognizer.RouteRecognizer();
-    this.postRouteRecognizer = new RouteRecognizer.RouteRecognizer();
-    this.putRouteRecognizer = new RouteRecognizer.RouteRecognizer();
-    this.deleteRouteRecognizer = new RouteRecognizer.RouteRecognizer();
+    this.getRouteRecognizer = new RouteRecognizer();
+    this.patchRouteRecognizer = new RouteRecognizer();
+    this.postRouteRecognizer = new RouteRecognizer();
+    this.putRouteRecognizer = new RouteRecognizer();
+    this.deleteRouteRecognizer = new RouteRecognizer();
   }
   
   get(url: string, handler: IRouterHandler): this {
@@ -55,7 +55,7 @@ export class Router {
     return this;
   }
   
-  private registerHandler(routeRecognizer: RouteRecognizer.RouteRecognizer, method: string, url: string, handler: IRouterHandler) {
+  private registerHandler(routeRecognizer: RouteRecognizer<any>, method: string, url: string, handler: IRouterHandler) {
     routeRecognizer.add([
       { path: url, handler: () => {} }
     ]);
@@ -79,7 +79,7 @@ export class Router {
          */
         const route = matchingRoutes[0];
         (<IExtendedRequest>request).params = route.params;
-        (<IExtendedRequest>request).queryParams = matchingRoutes.queryParams;
+        (<IExtendedRequest>request).queryParams = (<any>matchingRoutes).queryParams;
         
         return true;
       },

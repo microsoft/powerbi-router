@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "declaration": false,
+        "declaration": true,
         "noImplicitAny": true,
         "sourceMap": true
     },
