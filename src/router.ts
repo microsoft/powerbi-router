@@ -55,9 +55,21 @@ export class Router {
     return this;
   }
   
+  /**
+   * TODO: This method could use some refactoring.  There is conflict of interest between keeping clean separation of test and handle method
+   * Test method only returns boolean indicating if request can be handled, and handle method has opportunity to modify response and return promise of it.
+   * In the case of the router with route-recognizer where handlers are associated with routes, this already guarantees that only one handler is selected and makes the test method feel complicated
+   * Will leave as is an investigate cleaner ways at later time.
+   */
   private registerHandler(routeRecognizer: RouteRecognizer<any>, method: string, url: string, handler: IRouterHandler) {
+    const routeRecognizerHandler = (request: IExtendedRequest): Promise<IResponse> => {
+      const response = new Response();
+      return Promise.resolve(handler(request, response))
+        .then(x => response);
+    };
+
     routeRecognizer.add([
-      { path: url, handler: () => {} }
+      { path: url, handler: routeRecognizerHandler }
     ]);
     
     const internalHandler = {
@@ -65,7 +77,7 @@ export class Router {
         if (request.method !== method) {
           return false;
         }
-        
+
         const matchingRoutes = routeRecognizer.recognize(request.url);
         if(matchingRoutes === undefined) {
           return false;
@@ -80,13 +92,12 @@ export class Router {
         const route = matchingRoutes[0];
         (<IExtendedRequest>request).params = route.params;
         (<IExtendedRequest>request).queryParams = (<any>matchingRoutes).queryParams;
+        (<IExtendedRequest>request).handler = route.handler;
         
         return true;
       },
       handle(request: IExtendedRequest): Promise<IResponse> {
-        const response = new Response();
-        return Promise.resolve(handler(request, response))
-          .then(x => response);
+        return request.handler(request);
       }
     };
     
@@ -97,6 +108,7 @@ export class Router {
 export interface IExtendedRequest extends IRequest {
   params: any;
   queryParams: any;
+  handler: any;
 }
 
 export interface IRequest {
