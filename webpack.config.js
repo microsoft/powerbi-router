@@ -1,11 +1,22 @@
+var webpack = require('webpack');
+
 module.exports = {
-  entry: './src/router.ts',
+  entry: {
+    'router': './src/router.ts',
+    'router.min': './src/router.ts'
+  },
   output: {
     path: __dirname + "/dist",
-    filename: 'router.js',
+    filename: '[name].js',
     library: 'powerbi-router',
     libraryTarget: 'umd'
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true
+    })
+  ],
   devtool: 'source-map',
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
