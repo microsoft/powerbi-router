@@ -14,6 +14,6 @@ module.exports = {
     ]
   },
   ts: {
-    configFileName: "webpack.tsconfig.json"
+    configFileName: "webpack.test.tsconfig.json"
   }
 }

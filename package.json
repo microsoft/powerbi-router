@@ -23,6 +23,8 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-help": "^1.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
