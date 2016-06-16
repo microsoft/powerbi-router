@@ -2,6 +2,7 @@ var gulp = require('gulp-help')(require('gulp'));
 var del = require('del'),
     rename = require('gulp-rename'),
     replace = require('gulp-replace'),
+    uglify = require('gulp-uglify'),
     karma = require('karma'),
     webpack = require('webpack-stream'),
     webpackConfig = require('./webpack.config'),
@@ -13,6 +14,7 @@ var del = require('del'),
 gulp.task('build', 'Build for release', function (done) {
     return runSequence(
         'compile:ts',
+        'min',
         'generatecustomdts',
         done
     )
@@ -26,11 +28,19 @@ gulp.task('test', 'Run unit tests', function (done) {
     )
 });
 
-
 gulp.task('compile:ts', 'Compile source files', function () {
     return gulp.src(['typings/**/*.d.ts', './src/**/*.ts'])
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('min', 'Minify build files', function () {
+    return gulp.src(['./dist/*.js'])
+        .pipe(uglify())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('compile:spec', 'Compile typescript for tests', function () {
