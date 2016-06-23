@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/powerbi-router"
+    "url": "https://github.com/Microsoft/powerbi-router"
   },
   "keywords": [
     "microsoft",
