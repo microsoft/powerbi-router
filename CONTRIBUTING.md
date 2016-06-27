@@ -4,7 +4,7 @@
 
 Clone the repository:
 ```
-git clone https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/powerbi-router
+git clone https://github.com/Microsoft/powerbi-router
 ```
 
 Install global dependencies if needed:
@@ -20,7 +20,7 @@ typings install
 
 ## Building
 ```
-tsc -p .
+gulp build
 ```
 Or if using VSCode: `Ctrl + Shift + B`
 
