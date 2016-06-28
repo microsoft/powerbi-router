@@ -1,3 +1,5 @@
+var package = require('./package.json');
+
 module.exports = {
   entry: {
     'router': './src/router.ts'
@@ -5,7 +7,7 @@ module.exports = {
   output: {
     path: __dirname + "/dist",
     filename: '[name].js',
-    library: 'powerbi-router',
+    library: package.name,
     libraryTarget: 'umd'
   },
   devtool: 'source-map',
