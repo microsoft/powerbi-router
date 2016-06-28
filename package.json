@@ -12,6 +12,9 @@
     "type": "git",
     "url": "https://github.com/Microsoft/powerbi-router"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "microsoft",
     "powerbi",
