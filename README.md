@@ -5,12 +5,14 @@ Router for Microsoft Power BI. Given an http method and url pattern call the mat
 This library uses [Route-recognizer](https://github.com/tildeio/route-recognizer) to handle pattern matching such as `/root/path/:name` where `name` will be passed as paramter to the handler.
 
 ## Installation:
-```
+
+```bash
 npm install --save powerbi-router
 ```
 
 ## Usage:
-```
+
+```typescript
 import * as Wpmp from 'window-post-message-proxy';
 import * as Router from 'powerbi-router';
 
