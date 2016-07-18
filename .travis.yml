@@ -1,10 +1,19 @@
 language: node_js
 node_js:
-    - node
+- node
 install:
-    - npm install -g typings typescript
-    - npm link typescript
-    - typings install
-    - npm install
+- npm install -g typings typescript
+- npm link typescript
+- typings install
+- npm install
 script:
-    - gulp test
+- gulp test
+deploy:
+  provider: npm
+  email: nugetpowerbi@microsoft.com
+  api_key:
+    secure: e4bejkkKeA0BCtkLZjg22pWysOMOYO5K3IpiW7ia7DQr4OqHKHUxGXNOBYTkXkVG3KYzzSh+fhPV0sOsacZE1WACFaxmcMpE49CEXqdqMXEs8lm6B9ZECfGMnDykCrnGo1yVRprJ2gR1j3H9Mkhay4TcJnWlFXDwCeLtccKe9rtU0icVO9eKZR2Mnxw3/67wuj0PUR8qBxSd9NgmU5dvRVao9xmUHpPfaQQvHt59UJ1lPiMMCzEr9ehg1zmdgTToEUy8NaGChSJlJbtF9aCh429ji5hFqCVuzLL82kHWo9EW4S4IkYbj3DavYOf7vIFx087ZJiehuaDWZ2xpFDZarY/Dk1xYDRaMgTgLlORPQoBzZlEALqTi533esBs3dUpuaYmMrYxtdkZ5FCK1WwX4VZKx+/tnbOUACJGq0/VHfkFjL1fh86PljotIdB4cofBoo9rgeF/V5ZmxPITr0qq9U7HvVqKtefd1LognrFcrqTEMt8y4RAjgWSGqGFAMOpuzDVL7dP7QNMcDjso8GdINdZjxpyIMvraFE/01zr/HbDFVCt41mO+w8gXYHOsw8M6/7C9E2mXV/5Uz6MtqaQX/Lu0uIcxnFxkXNQagH6wrvrOMt1nGYztrCMKqeZykInSvsKiQgXC4kpmXAC7YvKrKkVV7vFqYD2CePsOZRzdJYCw=
+  on:
+    tags: true
+    repo: Microsoft/powerbi-router
+    branch: dev
