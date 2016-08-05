@@ -7,20 +7,16 @@ Clone the repository:
 git clone https://github.com/Microsoft/powerbi-router
 ```
 
-Install global dependencies if needed:
-```
-npm install -g typescript gulp typings
-```
+Navigate to the cloned directory
 
 Install local dependencies:
 ```
-typings install
 npm install
 ```
 
 ## Building
 ```
-gulp build
+npm run build
 ```
 Or if using VSCode: `Ctrl + Shift + B`
 
@@ -28,17 +24,27 @@ Or if using VSCode: `Ctrl + Shift + B`
 ```
 npm test
 ```
-or use gulp directly:
+
+By default the tests run using PhantomJS
+
+There are various command line arguments that can be passed to the test command to facilitate debugging:
+
+Run tests with Chrome
 ```
-gulp test
+npm test -- --chrome
 ```
 
-Run tests with Chrome and close when finished
+Enable  debug level logging for karma, and remove code coverage
 ```
-gulp test --debug
+npm test -- --debug
 ```
 
-Run tests with Chrome and remain open for debugging
+Disable single run to remain open for debugging
 ```
-gulp test --debug --watch
+npm test -- --watch
+```
+
+These are often combined and typical command for debugging tests is:
+```
+npm test -- --chrome --debug --watch
 ```
