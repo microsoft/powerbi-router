@@ -1,6 +1,6 @@
 {
   "name": "powerbi-router",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Router for Microsoft Power BI. Given an http method and url pattern call the matching handler with the request and response object. Syntax matches common libraries such as express and restify.",
   "main": "dist/router.js",
   "typings": "dist/router.d.ts",
