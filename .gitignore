@@ -4,5 +4,5 @@ typings
 tmp
 dist
 docs
-.*
+.publish
 npm-debug.log*
