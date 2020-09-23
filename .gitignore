@@ -6,3 +6,4 @@ dist
 docs
 .publish
 npm-debug.log*
+package-lock.json
