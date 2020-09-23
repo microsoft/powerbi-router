@@ -15,6 +15,7 @@ artifact_publish_options:
 
 signing_options:
   profile: 'external_distribution'
+  codesign_validation_glob_pattern: 'regex|.+(?:exe|dll)$;-|*.nd.dll;-|.gdn\\**'
 
 static_analysis_options:
   moderncop_options:
@@ -73,6 +74,8 @@ build:
           exclude:
             - '**/node_modules/**/*.*'
 
+package:
+  commands:
     - !!buildcommand
       name: 'Package'
       arguments: 'package.ps1'
